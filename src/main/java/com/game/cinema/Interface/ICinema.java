@@ -6,7 +6,7 @@
 package com.game.cinema.Interface;
 
 import com.game.cinema.exception.PasDeSeanceException;
-import com.game.cinema.Tarif;
+import com.game.cinema.Enum.Tarif;
 import java.util.List;
 
 /**

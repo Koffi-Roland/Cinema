@@ -5,6 +5,7 @@
  */
 package com.game.cinema;
 
+import com.game.cinema.Enum.Tarif;
 import com.game.cinema.exception.PasDeSeanceException;
 import com.game.cinema.Interface.IGestCinema;
 import com.game.cinema.Interface.ICinema;

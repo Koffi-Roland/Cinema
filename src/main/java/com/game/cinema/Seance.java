@@ -5,6 +5,7 @@
  */
 package com.game.cinema;
 
+import com.game.cinema.Enum.Tarif;
 import static java.lang.Long.sum;
 import java.util.HashMap;
 

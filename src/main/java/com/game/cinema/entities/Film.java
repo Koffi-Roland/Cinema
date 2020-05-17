@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game.cinema;
+package com.game.cinema.entities;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Film {
 
     private boolean aLaffiche;
 
-    public Film(String titre, String nomRealisateur, String year, String descriptif, boolean aLaffiche) {
+  /*  public Film(String titre, String nomRealisateur, String year, String descriptif, boolean aLaffiche) {
         this.titre = titre;
         this.nomRealisateur = nomRealisateur;
         this.year = year;
@@ -46,7 +46,7 @@ public class Film {
         this.descriptif = descriptif;
         this.aLaffiche = aLaffiche;
     }
-
+*/
     public Long getId() {
         return id;
     }

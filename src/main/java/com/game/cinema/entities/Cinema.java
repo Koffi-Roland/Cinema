@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game.cinema;
+package com.game.cinema.entities;
 
 import com.game.cinema.Enum.Tarif;
 import com.game.cinema.exception.PasDeSeanceException;
@@ -25,6 +25,7 @@ public class Cinema implements ICinema, IGestCinema {
     private List<Salle> salles = new ArrayList<>();
 
     private List<Film> films = new ArrayList<>();
+    
     private List<Seance> seances = new ArrayList<>();
 
     private int chiffeAffaireTotal = 0;
@@ -108,8 +109,10 @@ public class Cinema implements ICinema, IGestCinema {
 
     @Override
     public boolean achetePlace(String titreFilm, String jourHoraire, Tarif tarif) throws PasDeSeanceException {
+       
         for (Seance seance : seances) {
-            if (!seance.getFilm().getTitre().equals(titreFilm) | !seance.getDate_horaire().equals(jourHoraire)) {
+                   
+            if (!seance.getFilm().getTitre().equals(titreFilm) || !seance.getDate_horaire().equals(jourHoraire)) {
                 throw new PasDeSeanceException();
             }
 
@@ -124,7 +127,12 @@ public class Cinema implements ICinema, IGestCinema {
 
     @Override
     public void creerFilm(String titreFilm, String descriptif, String realisateur, int annee) {
-        Film film = new Film(titreFilm, realisateur, String.valueOf(annee), descriptif, false);
+        Film film = new Film();
+        film.setTitre(titreFilm);
+        film.setNomRealisateur(realisateur);
+        film.setDescriptif(descriptif);
+        film.setYear(String.valueOf(annee));
+        this.films.add(film);
 
     }
 

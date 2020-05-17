@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.game.cinema;
+package com.game.cinema.entities;
 
 import com.game.cinema.Enum.Tarif;
 import static java.lang.Long.sum;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  *
@@ -25,13 +26,13 @@ public class Seance {
 
     private Long placeRemplie;
 
-    private HashMap<String, Long> pricePlace = new HashMap<>();
+    private HashMap<Long, Long> pricePlace = new HashMap<>();
 
-    public HashMap<String, Long> getPricePlace() {
+    public HashMap<Long, Long> getPricePlace() {
         return pricePlace;
     }
 
-    public void setPricePlace(HashMap<String, Long> pricePlace) {
+    public void setPricePlace(HashMap<Long, Long> pricePlace) {
         this.pricePlace = pricePlace;
     }
 
@@ -93,7 +94,7 @@ public class Seance {
     //method estComplete
     public boolean estComplete() {
 
-        return salle.getNombreTotalPlaces() == placeRemplie;
+        return Objects.equals(salle.getNombreTotalPlaces(), placeRemplie);
 
     }
 
@@ -110,5 +111,13 @@ public class Seance {
 
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Seance{" + "id=" + id + ", date_horaire=" + date_horaire + ", salle=" + salle + ", film=" + film + ", placeRemplie=" + placeRemplie + ", pricePlace=" + pricePlace + '}';
+    }
+    
+    
+    
 
 }

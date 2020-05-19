@@ -5,11 +5,13 @@
  */
 package com.game.cinema.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author roland
  */
-public class Film {
+public class Film implements Serializable {
 
     private Long id;
 
@@ -23,7 +25,10 @@ public class Film {
 
     private boolean aLaffiche;
 
-  /*  public Film(String titre, String nomRealisateur, String year, String descriptif, boolean aLaffiche) {
+    private static final long serialVersionUID = 1L;
+
+
+    /*  public Film(String titre, String nomRealisateur, String year, String descriptif, boolean aLaffiche) {
         this.titre = titre;
         this.nomRealisateur = nomRealisateur;
         this.year = year;
@@ -46,7 +51,7 @@ public class Film {
         this.descriptif = descriptif;
         this.aLaffiche = aLaffiche;
     }
-*/
+     */
     public Long getId() {
         return id;
     }

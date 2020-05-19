@@ -11,6 +11,11 @@ import com.game.cinema.entities.Salle;
 import com.game.cinema.entities.Cinema;
 import com.game.cinema.entities.Film;
 import com.game.cinema.exception.PasDeSeanceException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -91,6 +96,48 @@ public class CinemaMenu {
         // TODO code application logic here
     }
 
+    public static void flushSerializable(Cinema cineA) {
+        ObjectOutputStream input = null;
+
+        try {
+            final FileOutputStream fichier = new FileOutputStream("cinema.txt");
+            input = new ObjectOutputStream(fichier);
+            input.writeObject(cineA);
+            input.flush();
+        } catch (final IOException e) {
+        } finally {
+            try {
+                if (input != null) {
+                    input.flush();
+                    input.close();
+                }
+            } catch (final IOException ex) {
+            }
+        }
+
+    }
+
+    public static void afficheSerializable() {
+        ObjectInputStream output = null;
+        try {
+            final FileInputStream fichier = new FileInputStream("cinema.txt");
+            output = new ObjectInputStream(fichier);
+            final Cinema cineA = (Cinema) output.readObject();
+            System.out.println("Cinema : ");
+            System.out.println("Film : " + cineA.getFilms());
+
+        } catch (final IOException | ClassNotFoundException e) {
+        } finally {
+            try {
+                if (output != null) {
+                    output.close();
+                }
+            } catch (final IOException ex) {
+            }
+        }
+
+    }
+
     public static void assistantPriliminaire() {
         System.out.println(" Creation d'une salle par l'assistant");
         List<Salle> salles = new ArrayList<>();
@@ -137,6 +184,13 @@ public class CinemaMenu {
         //method lesSeances
         cineA.setSeances(seances);
         System.out.println(cineA.lesSeances());
+
+        //Serializable
+        flushSerializable(cineA);
+        
+        //Deserializable
+        afficheSerializable();
+
     }
 
     public static void assistantFinanciere() throws PasDeSeanceException {
@@ -194,6 +248,13 @@ public class CinemaMenu {
 
         System.out.println(cineA.filmsALAffiche());
         System.out.println("Chiffre Affaire " + cineA.calculeChiffreAffaires() + " " + "Euro(s)");
+        
+
+        //Serializable
+        flushSerializable(cineA);
+        
+        //Deserializable
+        afficheSerializable();
 
     }
 }

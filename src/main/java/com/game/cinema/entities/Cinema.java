@@ -9,6 +9,7 @@ import com.game.cinema.Enum.Tarif;
 import com.game.cinema.exception.PasDeSeanceException;
 import com.game.cinema.Interface.IGestCinema;
 import com.game.cinema.Interface.ICinema;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,17 +19,19 @@ import java.util.Set;
  *
  * @author roland
  */
-public class Cinema implements ICinema, IGestCinema {
+public class Cinema implements ICinema, IGestCinema, Serializable {
 
     private Long id;
 
     private List<Salle> salles = new ArrayList<>();
 
     private List<Film> films = new ArrayList<>();
-    
+
     private List<Seance> seances = new ArrayList<>();
 
     private int chiffeAffaireTotal = 0;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -109,9 +112,9 @@ public class Cinema implements ICinema, IGestCinema {
 
     @Override
     public boolean achetePlace(String titreFilm, String jourHoraire, Tarif tarif) throws PasDeSeanceException {
-       
+
         for (Seance seance : seances) {
-                   
+
             if (!seance.getFilm().getTitre().equals(titreFilm) || !seance.getDate_horaire().equals(jourHoraire)) {
                 throw new PasDeSeanceException();
             }

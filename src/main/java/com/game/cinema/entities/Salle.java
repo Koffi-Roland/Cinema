@@ -5,15 +5,20 @@
  */
 package com.game.cinema.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author roland
  */
-public class Salle {
+public class Salle implements Serializable{
 
     private Long id;
     private String libelle;
     private Long nombreTotalPlaces;
+    
+    private static final long serialVersionUID = 1L;
+
 
   /*  public Salle(Long id, String libelle, Long nombreTotalPlaces) {
         this.id = id;

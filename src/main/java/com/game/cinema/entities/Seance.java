@@ -6,6 +6,7 @@
 package com.game.cinema.entities;
 
 import com.game.cinema.Enum.Tarif;
+import java.io.Serializable;
 import static java.lang.Long.sum;
 import java.util.HashMap;
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Objects;
  *
  * @author roland
  */
-public class Seance {
+public class Seance implements Serializable {
 
     private Long id;
 
@@ -27,6 +28,9 @@ public class Seance {
     private Long placeRemplie;
 
     private HashMap<Long, Long> pricePlace = new HashMap<>();
+    
+            private static final long serialVersionUID = 1L;
+
 
     public HashMap<Long, Long> getPricePlace() {
         return pricePlace;
